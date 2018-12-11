@@ -25,24 +25,24 @@ import org.fusesource.mqtt.client.Topic;
 
 public class MainActivity extends AppCompatActivity {
 
-    List<String> aArray = new ArrayList<String>();
-    Boolean stachange = false;
-    String DATA = null;
-    String DATAtemp = null;
-    MQTT mqtt = new MQTT();
-    CallbackConnection connectionL;
+    private List<String> aArray = new ArrayList<String>();
+    private Boolean stachange = false;
+    private String DATA = null;
+    private String DATAtemp = null;
+    private MQTT mqtt = new MQTT();
+    private CallbackConnection connectionL;
 
-    LinearLayout LL_Login;
-    EditText ET_SendID;
-    EditText ET_GetID;
-    EditText ET_IP;
-    EditText ET_DuanKou;
-    TextView TV_Ent;
-    LinearLayout LL_Main;
-    TextView TV_Main_ShowText;
+    private LinearLayout LL_Login;
+    private EditText ET_SendID;
+    private EditText ET_GetID;
+    private EditText ET_IP;
+    private EditText ET_DuanKou;
+    private TextView TV_Ent;
+    private LinearLayout LL_Main;
+    private TextView TV_Main_ShowText;
 
-    EditText ET_Main_SendText;
-    TextView TV_Main_Send;
+    private EditText ET_Main_SendText;
+    private TextView TV_Main_Send;
 
     private String IP;
     private String DuanKou;
@@ -119,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
         mqtt.setWillRetain(true);
         mqtt.setWillTopic(SendID);
         mqtt.setWillMessage("We are out!");
+        mqtt.setVersion("3.1.1");
         TV_Main_ShowText.setText(TV_Main_ShowText.getText()+"\n"+"发布主题:"+SendID);
         TV_Main_ShowText.setText(TV_Main_ShowText.getText()+"\n"+"订阅主题:"+GetID);
 
@@ -246,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
                 // TODO Auto-generated method stub
                 switch (msg.what){
                     case 100:{
-                        activity.TV_Main_ShowText.setText(activity.TV_Main_ShowText.getText()+"\n"+(String)msg.obj);
+                        activity.TV_Main_ShowText.setText(activity.TV_Main_ShowText.getText()+"\n"+msg.obj);
                         break;
                     }
                 }
